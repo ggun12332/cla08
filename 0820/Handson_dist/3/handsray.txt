@@ -1,0 +1,29 @@
+section .data
+    num1 dd 0x12345678
+    num2 dd 0x87654321
+
+section .text
+    global _start
+
+_start:
+    mov eax, [num1]
+    mov ebx, [num2]
+
+    and eax, ebx
+
+    cmp eax, 0x10000000
+    jg hehe
+
+    or eax, ebx
+    jmp end
+
+hehe:
+    xor eax, ebx
+
+end:
+    shl eax, 2
+    shr eax, 3
+    
+    [What eax contain?]
+    mov eax, 1
+    int 0x80
